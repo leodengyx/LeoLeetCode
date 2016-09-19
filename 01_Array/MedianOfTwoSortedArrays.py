@@ -40,35 +40,35 @@ class Solution(object):
             return b[k-1]
         if n == 0:
             return a[k-1]
-        if k <= 1:
+        if k == 1:
             return min(a[0], b[0])
 
-
         if m/2 + n/2 >= k:
-            if a[m/2] > b[n/2]:
+            if a[m/2-1] > b[n/2-1]:
                 if m > 1:
-                    return self.getkth(a[m/2+1:], b, k-m/2)
+                    return self.getkth(a[:m/2], b, k)
                 else:
-                    return self.getkth([], b, k-1)
+                    return self.getkth([], b, k)
             else:
                 if n > 1:
-                    return self.getkth(a, b[n/2+1:], k-n/2)
+                    return self.getkth(a, b[:n/2], k)
                 else:
-                    return self.getkth(a, [], k-1)
+                    return self.getkth(a, [], k)
         else:
-            if a[m/2] > b[n/2]:
-                if m > 1:
-                    return self.getkth(a[:m/2], b, k-m/2)
-                else:
-                    return self.getkth([], b, k-1)
-            else:
+            if a[m/2-1] > b[n/2-1]:
                 if n > 1:
-                    return self.getkth(a, b[:n/2], k-n/2)
+                    return self.getkth(a, b[n/2:], int(k-math.floor(n/2.0)))
                 else:
                     return self.getkth(a, [], k-1)
+            else:
+                if m > 1:
+                    return self.getkth(a[m/2:], b, int(k-math.floor(m/2.0)))
+                else:
+                    return self.getkth([], b, k-1)
+
 
 
 
 if __name__ == "__main__":
     solution = Solution()
-    print solution.findMedianSortedArrays([1,3], [2])
+    print solution.findMedianSortedArrays([1,2], [3,4])
