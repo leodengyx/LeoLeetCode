@@ -66,9 +66,6 @@ class Solution(object):
                 else:
                     return self.getkth([], b, k-1)
 
-
-
-
 if __name__ == "__main__":
     solution = Solution()
     print solution.findMedianSortedArrays([1,2], [3,4])
