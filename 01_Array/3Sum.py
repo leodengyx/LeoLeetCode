@@ -35,13 +35,20 @@ class Solution(object):
     Solution 2: Based on 2Sum solution
     """
     def threeSum_2(self, nums):
-        result_list = []
+        result_dict = {}
         for i in range(len(nums) - 2):
-
+            target = 0 - nums[i]
+            value_index_dict = {}
+            for j in range(i+1, len(nums)):
+                if value_index_dict.get(target - nums[j]) is not None:
+                    result_dict[str(sorted([nums[i], nums[j], target-nums[j]]))] = sorted([nums[i], nums[j], target-nums[j]])
+                value_index_dict[nums[j]] = j
+        return result_dict.values()
 
 if __name__ == "__main__":
     solution = Solution()
     print(solution.threeSum_1([-1, 0, 1, 2, -1, -4]))
+    print(solution.threeSum_2([-1, 0, 1, 2, -1, -4]))
 
 
 
