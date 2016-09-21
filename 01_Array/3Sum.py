@@ -12,7 +12,36 @@ A solution set is:
   [-1, -1, 2]
 ]
 """
+class Solution(object):
 
+    """
+    Solution 1: Brutal Force
+    """
+    def threeSum_1(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        result_dict = {}
+        for i in range(len(nums)):
+            for j in range(len(nums)):
+                for k in range(len(nums)):
+                    if not (i == j or i == k or j == k):
+                        if nums[i] + nums[j] + nums[k] == 0:
+                            result_dict[str(sorted([nums[i], nums[j], nums[k]]))] = sorted([nums[i], nums[j], nums[k]])
+        return result_dict.values()
+
+    """
+    Solution 2: Based on 2Sum solution
+    """
+    def threeSum_2(self, nums):
+        result_list = []
+        for i in range(len(nums) - 2):
+
+
+if __name__ == "__main__":
+    solution = Solution()
+    print(solution.threeSum_1([-1, 0, 1, 2, -1, -4]))
 
 
 
