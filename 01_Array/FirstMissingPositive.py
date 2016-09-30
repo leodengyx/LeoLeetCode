@@ -14,10 +14,20 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        max_negative = None
-        min_continous_positive = None
-        max_continous_positive = None
-        max_positive_after_gap = None
-        for 
+        i = 0
+        while i < len(nums):
+            if nums[i] > 0 and nums[i] - 1 < len(nums) and nums[nums[i] - 1] != nums[i]:
+                nums[nums[i] - 1], nums[i] = nums[i], nums[nums[i] - 1]
+            else:
+                i += 1
+        for j in range(len(nums)):
+            if nums[j] != j + 1:
+                return j + 1
+        return len(nums) + 1
+
+if __name__ == "__main__":
+    solution = Solution()
+    print(solution.firstMissingPositive([9,4,-1,2]))
+
 
 
