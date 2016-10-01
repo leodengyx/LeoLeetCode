@@ -5,8 +5,6 @@ Given [1,2,0] return 3,
 and [3,4,-1,1] return 2.
 Your algorithm should run in O(n) time and uses constant space.
 """
-import sys
-
 
 class Solution(object):
     def firstMissingPositive(self, nums):
@@ -27,7 +25,5 @@ class Solution(object):
 
 if __name__ == "__main__":
     solution = Solution()
-    print(solution.firstMissingPositive([9,4,-1,2]))
-
-
+    print(solution.firstMissingPositive([0,2,2,4,0,1,0,1,3]))
 
