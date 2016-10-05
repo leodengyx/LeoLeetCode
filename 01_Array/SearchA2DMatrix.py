@@ -30,26 +30,30 @@ class Solution(object):
             mid_index = (min_index + max_index) / 2
             if target == matrix[mid_index][0]:
                 return True
-            elif matrix[min_index][0] <= target < matrix[mid_index][0]:
+            elif target < matrix[mid_index][0]:
                 max_index = mid_index - 1
-            elif matrix[mid_index][0] < target <= matrix[max_index][0]:
+            elif matrix[mid_index][0] < target:
                 min_index = mid_index + 1
-        row_index = mid_index
+        if target < matrix[mid_index][0]:
+            row_index = mid_index - 1
+        else:
+            row_index = mid_index
+
         min_index = 0
         max_index = len(matrix[row_index]) - 1
         while max_index >= min_index:
             mid_index = (min_index + max_index) / 2
             if target == matrix[row_index][mid_index]:
                 return True
-            elif matrix[row_index][min_index] <= target < matrix[row_index][mid_index]:
+            elif target < matrix[row_index][mid_index]:
                 max_index = mid_index - 1
-            elif matrix[row_index][mid_index] < target <= matrix[row_index][max_index]:
+            elif matrix[row_index][mid_index] < target:
                 min_index = mid_index + 1
         return False
 
 if __name__ == "__main__":
     solution = Solution()
-    print(solution.searchMatrix([[1,   3,  5,  7], [10, 11, 16, 20], [23, 30, 34, 50]], 3))
+    print(solution.searchMatrix([[1,3,5,7],[10,11,16,20],[23,30,34,50]], 11))
 
 
 
